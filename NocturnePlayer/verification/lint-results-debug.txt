@@ -1,0 +1,180 @@
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\AndroidManifest.xml:6: Warning: The attribute android:dataExtractionRules only applies for Android 12 and higher; since minSdkVersion is API 29 you should also set android:fullBackupContent [DataExtractionRules]
+    <application android:name=".NocturneApp" android:allowBackup="false" android:dataExtractionRules="@xml/data_extraction_rules" android:label="@string/app_name" android:icon="@drawable/ic_app" android:theme="@style/Theme.Nocturne" android:supportsRtl="true">
+                                                                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "DataExtractionRules":
+   Before Android 12, the attributes android:allowBackup and
+   android:fullBackupContent were used to configure all forms of backup,
+   including cloud backups, device-to-device transfers and adb backup.
+
+   In Android 12 and higher, these attributes have been deprecated and will
+   only apply to cloud backups. You should instead use the attribute
+   android:dataExtractionRules, specifying an @xml resource that configures
+   which files to back up, for cloud backups and for device-to-device
+   transfers, separately. If your minSdkVersion supports older versions,
+   you'll still want to specify an android:fullBackupContent resource if the
+   default behavior is not right for your app.
+
+   https://developer.android.com/about/versions/12/backup-restore#xml-changes
+   https://goo.gle/DataExtractionRules
+
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\res\layout\activity_player.xml:1: Warning: Possible overdraw: Root element paints background #000000 with a theme that also paints a background (inferred theme is @style/Theme.Nocturne) [Overdraw]
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#000000">
+                                                                                                                                                                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\res\layout\fragment_library.xml:1: Warning: Possible overdraw: Root element paints background @color/page with a theme that also paints a background (inferred theme is @style/Theme.Nocturne) [Overdraw]
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/page" android:padding="20dp">
+                                                                                                                                                                                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "Overdraw":
+   If you set a background drawable on a root view, then you should use a
+   custom theme where the theme background is null. Otherwise, the theme
+   background will be painted first, only to have your custom background
+   completely cover it; this is called "overdraw".
+
+   NOTE: This detector relies on figuring out which layouts are associated
+   with which activities based on scanning the Java code, and it's currently
+   doing that using an inexact pattern matching algorithm. Therefore, it can
+   incorrectly conclude which activity the layout is associated with and then
+   wrongly complain that a background-theme is hidden.
+
+   If you want your custom background on multiple pages, then you should
+   consider making a custom theme with your custom background and just using
+   that theme instead of a root element background.
+
+   Of course it's possible that your custom drawable is translucent and you
+   want it to be mixed with the background. However, you will get better
+   performance if you pre-mix the background with your drawable and use that
+   resulting image or color as a custom theme background instead.
+
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\data\LibraryRepository.kt:45: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
+                val root = DocumentFile.fromTreeUri(context, Uri.parse(folder.uri)) ?: continue
+                                                             ~~~~~~~~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\player\PlayerViewModel.kt:72: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
+                val item = dao.video(uri) ?: app.library.importVideo(Uri.parse(uri))
+                                                                     ~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\data\SubtitleRepository.kt:56: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
+            val root = DocumentFile.fromTreeUri(context, Uri.parse(folder.uri)) ?: continue
+                                                         ~~~~~~~~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\data\SubtitleRepository.kt:62: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
+                val videoKey = documentKey(Uri.parse(video.uri))
+                                           ~~~~~~~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\data\SubtitleRepository.kt:78: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
+        val bytes = context.contentResolver.openInputStream(Uri.parse(file.uri))?.use {
+                                                            ~~~~~~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SubtitleStyleDialog.kt:39: Warning: Use the KTX extension function String.toColorInt instead? [UseKtx]
+                val fg = Color.parseColor(foreground.text.toString())
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SubtitleStyleDialog.kt:40: Warning: Use the KTX extension function String.toColorInt instead? [UseKtx]
+                val bg = Color.parseColor(background.text.toString())
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\VideoAdapter.kt:38: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
+                val bitmap = withContext(Dispatchers.IO) { try { b.root.context.contentResolver.loadThumbnail(Uri.parse(v.uri), Size(320, 180), signal) } catch (_: Exception) { null } }
+                                                                                                              ~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UseKtx":
+   The Android KTX libraries decorates the Android platform SDK as well as
+   various libraries with more convenient extension functions available from
+   Kotlin, allowing you to use default parameters, named parameters, and
+   more.
+
+   Available options:
+
+   **remove-defaults** (default is true):
+   Whether to skip arguments that match the defaults provided by the extension.
+
+   Extensions often provide default values for some of the parameters. For example:
+   ```kotlin
+   fun Path.readLines(charset: Charset = Charsets.UTF_8): List<String> { return Files.readAllLines(this, charset) }
+   ```
+   This lint check will by default automatically omit parameters that match the default, so if your code was calling
+
+   ```kotlin
+   Files.readAllLines(file, Charset.UTF_8)
+   ```
+   lint would replace this with
+   ```kotlin
+   file.readLines()
+   ```
+   rather than
+
+   ```kotlin
+   file.readLines(Charset.UTF_8
+   ```
+   You can turn this behavior off using this option.
+
+   To configure this option, use a `lint.xml` file with an <option> like this:
+
+   ```xml
+   <lint>
+       <issue id="UseKtx">
+           <option name="remove-defaults" value="true" />
+       </issue>
+   </lint>
+   ```
+
+   **require-present** (default is true):
+   Whether to only offer extensions already available.
+
+   This option lets you only have lint suggest extension replacements if those extensions are already available on the class path (in other words, you're already depending on the library containing the extension method.)
+
+   To configure this option, use a `lint.xml` file with an <option> like this:
+
+   ```xml
+   <lint>
+       <issue id="UseKtx">
+           <option name="require-present" value="true" />
+       </issue>
+   </lint>
+   ```
+
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\LibraryFragment.kt:66: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            launch { vm.videos.collect { adapter.submitList(it); b.count.text = "${it.size} видео"; b.empty.visibility = if (it.isEmpty()) View.VISIBLE else View.GONE } }
+                                                                                ~~~~~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\PlayerActivity.kt:91: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                b.speed.text = "${o.speed}×"
+                               ~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\PlayerActivity.kt:150: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+        fun render() { label.text = "${"%+.1f".format(vm.options.value.delayMs / 1000.0)} с" }
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\PlayerActivity.kt:150: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        fun render() { label.text = "${"%+.1f".format(vm.options.value.delayMs / 1000.0)} с" }
+                                        ~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SettingsFragment.kt:60: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            box.addView(TextView(requireContext()).apply { text = "Nocturne 1.0\nЛокальная видеотека · AndroidX Media3\n\nВиртуальные папки группируют видео внутри приложения. Подключите физические папки через SAF для поиска видео и соседних субтитров."; setTextColor(requireContext().getColor(R.color.muted)); setPadding(12) })
+                                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SettingsFragment.kt:60: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            box.addView(TextView(requireContext()).apply { text = "Nocturne 1.0\nЛокальная видеотека · AndroidX Media3\n\nВиртуальные папки группируют видео внутри приложения. Подключите физические папки через SAF для поиска видео и соседних субтитров."; setTextColor(requireContext().getColor(R.color.muted)); setPadding(12) })
+                                                                   ~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SettingsFragment.kt:60: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            box.addView(TextView(requireContext()).apply { text = "Nocturne 1.0\nЛокальная видеотека · AndroidX Media3\n\nВиртуальные папки группируют видео внутри приложения. Подключите физические папки через SAF для поиска видео и соседних субтитров."; setTextColor(requireContext().getColor(R.color.muted)); setPadding(12) })
+                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SettingsFragment.kt:60: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            box.addView(TextView(requireContext()).apply { text = "Nocturne 1.0\nЛокальная видеотека · AndroidX Media3\n\nВиртуальные папки группируют видео внутри приложения. Подключите физические папки через SAF для поиска видео и соседних субтитров."; setTextColor(requireContext().getColor(R.color.muted)); setPadding(12) })
+                                                                                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SubtitleStyleDialog.kt:19: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            box.addView(Slider(context).apply { valueFrom = min; valueTo = max; stepSize = step; this.value = value.coerceIn(min, max); addOnChangeListener { _, v, _ -> l.text = "$title: ${"%.0f".format(v)}"; change(v) } })
+                                                                                                                                                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SubtitleStyleDialog.kt:19: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            box.addView(Slider(context).apply { valueFrom = min; valueTo = max; stepSize = step; this.value = value.coerceIn(min, max); addOnChangeListener { _, v, _ -> l.text = "$title: ${"%.0f".format(v)}"; change(v) } })
+                                                                                                                                                                                              ~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\VideoAdapter.kt:30: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+        b.meta.text = "${durationText(v.duration)}  ·  ${"%.1f".format(v.size / 1048576.0)} МБ"
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\VideoAdapter.kt:30: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        b.meta.text = "${durationText(v.duration)}  ·  ${"%.1f".format(v.size / 1048576.0)} МБ"
+                                                          ~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+0 errors, 23 warnings

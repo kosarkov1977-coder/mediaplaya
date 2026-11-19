@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 9.5.1">
+
+    <issue
+        id="DataExtractionRules"
+        severity="Warning"
+        message="The attribute `android:dataExtractionRules` only applies for Android 12 and higher; since `minSdkVersion` is API 29 you should also set `android:fullBackupContent`"
+        category="Security"
+        priority="3"
+        summary="Missing data extraction rules"
+        explanation="Before Android 12, the attributes `android:allowBackup` and `android:fullBackupContent` were used to configure all forms of backup, including cloud backups, device-to-device transfers and adb backup.&#xA;&#xA;In Android 12 and higher, these attributes have been deprecated and will only apply to cloud backups. You should instead use the attribute `android:dataExtractionRules`, specifying an `@xml` resource that configures which files to back up, for cloud backups and for device-to-device transfers, separately. If your `minSdkVersion` supports older versions, you&apos;ll still want to specify an `android:fullBackupContent` resource if the default behavior is not right for your app."
+        url="https://developer.android.com/about/versions/12/backup-restore#xml-changes"
+        urls="https://developer.android.com/about/versions/12/backup-restore#xml-changes,https://goo.gle/DataExtractionRules"
+        errorLine1="    &lt;application android:name=&quot;.NocturneApp&quot; android:allowBackup=&quot;false&quot; android:dataExtractionRules=&quot;@xml/data_extraction_rules&quot; android:label=&quot;@string/app_name&quot; android:icon=&quot;@drawable/ic_app&quot; android:theme=&quot;@style/Theme.Nocturne&quot; android:supportsRtl=&quot;true&quot;>"
+        errorLine2="                                                                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\AndroidManifest.xml"
+            line="6"
+            column="103"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        severity="Warning"
+        message="Possible overdraw: Root element paints background `#000000` with a theme that also paints a background (inferred theme is `@style/Theme.Nocturne`)"
+        category="Performance"
+        priority="3"
+        summary="Overdraw: Painting regions more than once"
+        explanation="If you set a background drawable on a root view, then you should use a custom theme where the theme background is null. Otherwise, the theme background will be painted first, only to have your custom background completely cover it; this is called &quot;overdraw&quot;.&#xA;&#xA;NOTE: This detector relies on figuring out which layouts are associated with which activities based on scanning the Java code, and it&apos;s currently doing that using an inexact pattern matching algorithm. Therefore, it can incorrectly conclude which activity the layout is associated with and then wrongly complain that a background-theme is hidden.&#xA;&#xA;If you want your custom background on multiple pages, then you should consider making a custom theme with your custom background and just using that theme instead of a root element background.&#xA;&#xA;Of course it&apos;s possible that your custom drawable is translucent and you want it to be mixed with the background. However, you will get better performance if you pre-mix the background with your drawable and use that resulting image or color as a custom theme background instead."
+        errorLine1="&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot; android:id=&quot;@+id/root&quot; android:layout_width=&quot;match_parent&quot; android:layout_height=&quot;match_parent&quot; android:background=&quot;#000000&quot;>"
+        errorLine2="                                                                                                                                                                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\res\layout\activity_player.xml"
+            line="1"
+            column="221"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        severity="Warning"
+        message="Possible overdraw: Root element paints background `@color/page` with a theme that also paints a background (inferred theme is `@style/Theme.Nocturne`)"
+        category="Performance"
+        priority="3"
+        summary="Overdraw: Painting regions more than once"
+        explanation="If you set a background drawable on a root view, then you should use a custom theme where the theme background is null. Otherwise, the theme background will be painted first, only to have your custom background completely cover it; this is called &quot;overdraw&quot;.&#xA;&#xA;NOTE: This detector relies on figuring out which layouts are associated with which activities based on scanning the Java code, and it&apos;s currently doing that using an inexact pattern matching algorithm. Therefore, it can incorrectly conclude which activity the layout is associated with and then wrongly complain that a background-theme is hidden.&#xA;&#xA;If you want your custom background on multiple pages, then you should consider making a custom theme with your custom background and just using that theme instead of a root element background.&#xA;&#xA;Of course it&apos;s possible that your custom drawable is translucent and you want it to be mixed with the background. However, you will get better performance if you pre-mix the background with your drawable and use that resulting image or color as a custom theme background instead."
+        errorLine1="&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot; android:layout_width=&quot;match_parent&quot; android:layout_height=&quot;match_parent&quot; android:orientation=&quot;vertical&quot; android:background=&quot;@color/page&quot; android:padding=&quot;20dp&quot;>"
+        errorLine2="                                                                                                                                                                                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\res\layout\fragment_library.xml"
+            line="1"
+            column="230"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        severity="Warning"
+        message="Use the KTX extension function `String.toUri` instead?"
+        category="Productivity"
+        priority="6"
+        summary="Use KTX extension function"
+        explanation="The Android KTX libraries decorates the Android platform SDK as well as various libraries with more convenient extension functions available from Kotlin, allowing you to use default parameters, named parameters, and more."
+        errorLine1="                val root = DocumentFile.fromTreeUri(context, Uri.parse(folder.uri)) ?: continue"
+        errorLine2="                                                             ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\data\LibraryRepository.kt"
+            line="45"
+            column="62"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        severity="Warning"
+        message="Use the KTX extension function `String.toUri` instead?"
+        category="Productivity"
+        priority="6"
+        summary="Use KTX extension function"
+        explanation="The Android KTX libraries decorates the Android platform SDK as well as various libraries with more convenient extension functions available from Kotlin, allowing you to use default parameters, named parameters, and more."
+        errorLine1="                val item = dao.video(uri) ?: app.library.importVideo(Uri.parse(uri))"
+        errorLine2="                                                                     ~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\player\PlayerViewModel.kt"
+            line="72"
+            column="70"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        severity="Warning"
+        message="Use the KTX extension function `String.toUri` instead?"
+        category="Productivity"
+        priority="6"
+        summary="Use KTX extension function"
+        explanation="The Android KTX libraries decorates the Android platform SDK as well as various libraries with more convenient extension functions available from Kotlin, allowing you to use default parameters, named parameters, and more."
+        errorLine1="            val root = DocumentFile.fromTreeUri(context, Uri.parse(folder.uri)) ?: continue"
+        errorLine2="                                                         ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\data\SubtitleRepository.kt"
+            line="56"
+            column="58"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        severity="Warning"
+        message="Use the KTX extension function `String.toUri` instead?"
+        category="Productivity"
+        priority="6"
+        summary="Use KTX extension function"
+        explanation="The Android KTX libraries decorates the Android platform SDK as well as various libraries with more convenient extension functions available from Kotlin, allowing you to use default parameters, named parameters, and more."
+        errorLine1="                val videoKey = documentKey(Uri.parse(video.uri))"
+        errorLine2="                                           ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\data\SubtitleRepository.kt"
+            line="62"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        severity="Warning"
+        message="Use the KTX extension function `String.toUri` instead?"
+        category="Productivity"
+        priority="6"
+        summary="Use KTX extension function"
+        explanation="The Android KTX libraries decorates the Android platform SDK as well as various libraries with more convenient extension functions available from Kotlin, allowing you to use default parameters, named parameters, and more."
+        errorLine1="        val bytes = context.contentResolver.openInputStream(Uri.parse(file.uri))?.use {"
+        errorLine2="                                                            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\data\SubtitleRepository.kt"
+            line="78"
+            column="61"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        severity="Warning"
+        message="Use the KTX extension function `String.toColorInt` instead?"
+        category="Productivity"
+        priority="6"
+        summary="Use KTX extension function"
+        explanation="The Android KTX libraries decorates the Android platform SDK as well as various libraries with more convenient extension functions available from Kotlin, allowing you to use default parameters, named parameters, and more."
+        errorLine1="                val fg = Color.parseColor(foreground.text.toString())"
+        errorLine2="                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SubtitleStyleDialog.kt"
+            line="39"
+            column="26"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        severity="Warning"
+        message="Use the KTX extension function `String.toColorInt` instead?"
+        category="Productivity"
+        priority="6"
+        summary="Use KTX extension function"
+        explanation="The Android KTX libraries decorates the Android platform SDK as well as various libraries with more convenient extension functions available from Kotlin, allowing you to use default parameters, named parameters, and more."
+        errorLine1="                val bg = Color.parseColor(background.text.toString())"
+        errorLine2="                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SubtitleStyleDialog.kt"
+            line="40"
+            column="26"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        severity="Warning"
+        message="Use the KTX extension function `String.toUri` instead?"
+        category="Productivity"
+        priority="6"
+        summary="Use KTX extension function"
+        explanation="The Android KTX libraries decorates the Android platform SDK as well as various libraries with more convenient extension functions available from Kotlin, allowing you to use default parameters, named parameters, and more."
+        errorLine1="                val bitmap = withContext(Dispatchers.IO) { try { b.root.context.contentResolver.loadThumbnail(Uri.parse(v.uri), Size(320, 180), signal) } catch (_: Exception) { null } }"
+        errorLine2="                                                                                                              ~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\VideoAdapter.kt"
+            line="38"
+            column="111"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="            launch { vm.videos.collect { adapter.submitList(it); b.count.text = &quot;${it.size} видео&quot;; b.empty.visibility = if (it.isEmpty()) View.VISIBLE else View.GONE } }"
+        errorLine2="                                                                                ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\LibraryFragment.kt"
+            line="66"
+            column="81"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="                b.speed.text = &quot;${o.speed}×&quot;"
+        errorLine2="                               ~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\PlayerActivity.kt"
+            line="91"
+            column="32"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="        fun render() { label.text = &quot;${&quot;%+.1f&quot;.format(vm.options.value.delayMs / 1000.0)} с&quot; }"
+        errorLine2="                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\PlayerActivity.kt"
+            line="150"
+            column="37"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="        fun render() { label.text = &quot;${&quot;%+.1f&quot;.format(vm.options.value.delayMs / 1000.0)} с&quot; }"
+        errorLine2="                                        ~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\PlayerActivity.kt"
+            line="150"
+            column="41"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="            box.addView(TextView(requireContext()).apply { text = &quot;Nocturne 1.0\nЛокальная видеотека · AndroidX Media3\n\nВиртуальные папки группируют видео внутри приложения. Подключите физические папки через SAF для поиска видео и соседних субтитров.&quot;; setTextColor(requireContext().getColor(R.color.muted)); setPadding(12) })"
+        errorLine2="                                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SettingsFragment.kt"
+            line="60"
+            column="67"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="            box.addView(TextView(requireContext()).apply { text = &quot;Nocturne 1.0\nЛокальная видеотека · AndroidX Media3\n\nВиртуальные папки группируют видео внутри приложения. Подключите физические папки через SAF для поиска видео и соседних субтитров.&quot;; setTextColor(requireContext().getColor(R.color.muted)); setPadding(12) })"
+        errorLine2="                                                                   ~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SettingsFragment.kt"
+            line="60"
+            column="68"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="            box.addView(TextView(requireContext()).apply { text = &quot;Nocturne 1.0\nЛокальная видеотека · AndroidX Media3\n\nВиртуальные папки группируют видео внутри приложения. Подключите физические папки через SAF для поиска видео и соседних субтитров.&quot;; setTextColor(requireContext().getColor(R.color.muted)); setPadding(12) })"
+        errorLine2="                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SettingsFragment.kt"
+            line="60"
+            column="82"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="            box.addView(TextView(requireContext()).apply { text = &quot;Nocturne 1.0\nЛокальная видеотека · AndroidX Media3\n\nВиртуальные папки группируют видео внутри приложения. Подключите физические папки через SAF для поиска видео и соседних субтитров.&quot;; setTextColor(requireContext().getColor(R.color.muted)); setPadding(12) })"
+        errorLine2="                                                                                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SettingsFragment.kt"
+            line="60"
+            column="123"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="            box.addView(Slider(context).apply { valueFrom = min; valueTo = max; stepSize = step; this.value = value.coerceIn(min, max); addOnChangeListener { _, v, _ -> l.text = &quot;$title: ${&quot;%.0f&quot;.format(v)}&quot;; change(v) } })"
+        errorLine2="                                                                                                                                                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SubtitleStyleDialog.kt"
+            line="19"
+            column="179"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="            box.addView(Slider(context).apply { valueFrom = min; valueTo = max; stepSize = step; this.value = value.coerceIn(min, max); addOnChangeListener { _, v, _ -> l.text = &quot;$title: ${&quot;%.0f&quot;.format(v)}&quot;; change(v) } })"
+        errorLine2="                                                                                                                                                                                              ~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\SubtitleStyleDialog.kt"
+            line="19"
+            column="191"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="        b.meta.text = &quot;${durationText(v.duration)}  ·  ${&quot;%.1f&quot;.format(v.size / 1048576.0)} МБ&quot;"
+        errorLine2="                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\VideoAdapter.kt"
+            line="30"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="        b.meta.text = &quot;${durationText(v.duration)}  ·  ${&quot;%.1f&quot;.format(v.size / 1048576.0)} МБ&quot;"
+        errorLine2="                                                          ~~~~">
+        <location
+            file="C:\Users\looks\Documents\Codex\2026-11-17\13-11-2026-9-44-android\outputs\NocturnePlayer\app\src\main\java\dev\nocturne\player\ui\VideoAdapter.kt"
+            line="30"
+            column="59"/>
+    </issue>
+
+</issues>

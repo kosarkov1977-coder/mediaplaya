@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name" translatable="false">Nocturne</string>
+    <string name="fragment_library_text_1">NOCTURNE</string>
+    <string name="fragment_library_text_2">Ваше кино. Ваш ритм.</string>
+    <string name="fragment_library_text_3">Настройки</string>
+    <string name="fragment_library_hint_4">Поиск в видеотеке</string>
+    <string name="fragment_library_text_5">Все видео</string>
+    <string name="fragment_library_text_6">Продолжить</string>
+    <string name="fragment_library_text_7">Недавно</string>
+    <string name="fragment_library_text_8">Коллекции</string>
+    <string name="fragment_library_text_9">Сортировка</string>
+    <string name="fragment_library_text_10">+</string>
+    <string name="fragment_library_contentdescription_11">Добавить видео или папку</string>
+    <string name="fragment_library_text_12">Здесь будет ваша видеотека.\nНажмите +, чтобы открыть видео или добавить папку.</string>
+    <string name="item_video_contentdescription_1">Миниатюра видео</string>
+    <string name="item_video_text_2">⋮</string>
+    <string name="item_video_contentdescription_3">Действия с видео</string>
+    <string name="activity_player_text_1">‹</string>
+    <string name="activity_player_contentdescription_2">Назад</string>
+    <string name="activity_player_text_3">Блокировка</string>
+    <string name="activity_player_text_4">Пред.</string>
+    <string name="activity_player_text_5">След.</string>
+    <string name="activity_player_text_6">Субтитры</string>
+    <string name="activity_player_text_7">Аудио</string>
+    <string name="activity_player_text_8">1×</string>
+    <string name="activity_player_text_9">Масштаб</string>
+    <string name="activity_player_text_10">PiP</string>
+    <string name="activity_player_contentdescription_11">Картинка в картинке</string>
+    <string name="activity_player_text_12">Звук / свет</string>
+    <string name="activity_player_text_13">Разблокировать</string>
+</resources>

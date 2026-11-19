@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.nocturne.player.SubtitleParsersTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-17T04:17:44.326Z" hostname="ASCEND" time="0.531">
+  <properties/>
+  <testcase name="repositoryReadsWindows1251AndUtf16WithoutLosingText" classname="dev.nocturne.player.SubtitleParsersTest" time="0.447"/>
+  <testcase name="allFiveFormatsParseAndSupportLiveDelay" classname="dev.nocturne.player.SubtitleParsersTest" time="0.081"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

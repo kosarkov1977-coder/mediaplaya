@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/page" android:padding="20dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fragment_library_text_1" android:textColor="@color/ink" android:textSize="28sp" android:fontFamily="sans-serif-medium" android:letterSpacing="0.12" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fragment_library_text_2" android:textColor="@color/muted" android:layout_marginTop="6dp" />
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton android:id="@+id/settings" android:layout_width="wrap_content" android:layout_height="48dp" android:text="@string/fragment_library_text_3" style="@style/Widget.Material3.Button.TextButton" />
+    </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:hint="@string/fragment_library_hint_4" app:boxCornerRadiusTopStart="18dp" app:boxCornerRadiusTopEnd="18dp" app:boxCornerRadiusBottomStart="18dp" app:boxCornerRadiusBottomEnd="18dp">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/search" android:layout_width="match_parent" android:layout_height="wrap_content" android:singleLine="true" android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="none" android:layout_marginTop="12dp">
+        <com.google.android.material.chip.ChipGroup android:id="@+id/filters" android:layout_width="wrap_content" android:layout_height="wrap_content" app:singleLine="true" app:singleSelection="true" app:selectionRequired="true">
+            <com.google.android.material.chip.Chip android:id="@+id/all" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fragment_library_text_5" android:checked="true" />
+            <com.google.android.material.chip.Chip android:id="@+id/resume" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fragment_library_text_6" />
+            <com.google.android.material.chip.Chip android:id="@+id/recent" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fragment_library_text_7" />
+            <com.google.android.material.chip.Chip android:id="@+id/collections" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fragment_library_text_8" />
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+        <TextView android:id="@+id/count" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textColor="@color/muted" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/sort" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fragment_library_text_9" style="@style/Widget.Material3.Button.TextButton" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/more" android:layout_width="48dp" android:layout_height="48dp" android:text="@string/fragment_library_text_10" android:contentDescription="@string/fragment_library_contentdescription_11" style="@style/Widget.Material3.Button.TonalButton" app:cornerRadius="24dp" />
+    </LinearLayout>
+    <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/progress" android:layout_width="match_parent" android:layout_height="3dp" android:indeterminate="true" android:visibility="gone" />
+    <TextView android:id="@+id/empty" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="28dp" android:gravity="center" android:text="@string/fragment_library_text_12" android:textColor="@color/muted" android:visibility="gone" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/list" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:clipToPadding="false" android:paddingBottom="16dp" />
+</LinearLayout>

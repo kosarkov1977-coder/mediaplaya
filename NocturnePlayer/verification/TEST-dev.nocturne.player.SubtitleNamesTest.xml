@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.nocturne.player.SubtitleNamesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-17T04:17:44.273Z" hostname="ASCEND" time="0.05">
+  <properties/>
+  <testcase name="acceptsExactNameAndLanguageSuffix" classname="dev.nocturne.player.SubtitleNamesTest" time="0.049"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

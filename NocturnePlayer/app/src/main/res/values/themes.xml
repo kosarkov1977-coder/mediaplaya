@@ -1,0 +1,15 @@
+<resources>
+    <style name="Theme.Nocturne" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#A694FF</item>
+        <item name="colorOnPrimary">#16102D</item>
+        <item name="colorSecondary">#78DAD1</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+    <color name="page">#F5F3FA</color>
+    <color name="card">#FFFFFF</color>
+    <color name="ink">#191524</color>
+    <color name="muted">#666074</color>
+</resources>

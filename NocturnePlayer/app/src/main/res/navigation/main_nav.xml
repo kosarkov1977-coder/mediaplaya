@@ -1,0 +1,4 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/main_nav" xmlns:app="http://schemas.android.com/apk/res-auto" app:startDestination="@id/library">
+    <fragment android:id="@+id/library" android:name="dev.nocturne.player.ui.LibraryFragment" android:label="Видеотека" />
+    <fragment android:id="@+id/settings" android:name="dev.nocturne.player.ui.SettingsFragment" android:label="Настройки" />
+</navigation>
